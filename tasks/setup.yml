@@ -1,0 +1,24 @@
+---
+
+
+- name: "Create folder"
+  file:
+    state=directory
+    path="{{mailpile_working_directory}}"
+    owner="{{mailpile_owner}}"
+    group="{{mailpile_group}}"
+
+
+- name: clone mailpile from github
+  git:
+    repo=https://github.com/pagekite/Mailpile.git
+    version="{{ mailpile_version }}"
+    dest="{{mailpile_working_directory}}"
+
+- name: "install pip dependencies"
+  pip:
+    requirements="{{mailpile_working_directory}}/requirements.txt"
+
+
+#- name: "symlink /usr/bin/python2"
+#  shell: "ln -s /usr/bin/python2.7 /usr/bin/python2"

@@ -1,0 +1,10 @@
+---
+
+mailpile_user               : "{{ansible_env.SUDO_USER}}"
+mailpile_owner              : "{{mailpile_user}}"
+mailpile_group              : "{{mailpile_user}}"
+
+mailpile_version            : "release/beta"
+
+mailpile_home_directory     : "/home/{{mailpile_user}}"
+mailpile_working_directory  : "{{mailpile_home_directory}}/mailpile"

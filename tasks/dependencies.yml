@@ -1,0 +1,36 @@
+#-   name : "debug"
+#    debug: msg="ansible_env:{{ansible_env}}"
+
+-   name: Debian-family | install dependency packages
+    apt:
+        pkg="{{item}}"
+        state=latest
+    with_items:
+        - git
+        - gnupg
+        - libxml2-dev
+        - libxslt-dev
+        - openssl
+        - python
+        - python-dev
+        - python-pip
+        - zlib1g-dev
+    when: ansible_os_family == 'Debian'
+
+
+#FIXME: update library names for yum?
+#-   name: RedHat-family | install dependency packages
+#    yum:
+#        name="{{item}}"
+#        state=installed
+#    with_items:
+#        - git
+#        - gnupg
+#        - libxml2-dev
+#        - libxslt-dev
+#        - openssl1
+#        - python
+#        - python-dev
+#        - python-pip
+#        - zlib1g-dev
+#    when: ansible_os_family == 'RedHat'
