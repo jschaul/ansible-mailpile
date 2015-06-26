@@ -19,6 +19,15 @@
   pip:
     requirements="{{mailpile_working_directory}}/requirements.txt"
 
+- name: "setup initially"
+  shell: "cd {{mailpile_working_directory}} && ./mp --setup"
+
+- name: "add test data"
+  shell: "cd {{mailpile_working_directory}} && ./mp --add testing"
+
+- name: "rescan"
+  shell: "cd {{mailpile_working_directory}} && ./mp rescan"
+
 
 #- name: "symlink /usr/bin/python2"
 #  shell: "ln -s /usr/bin/python2.7 /usr/bin/python2"
